@@ -255,8 +255,8 @@ if (isset($_GET['id'])) {
   <!-- Offer start -->
   <?php $query = mysqli_query($con, "SELECT * FROM `offers`");
   while ($row = mysqli_fetch_array($query)) {
-  ?>
-  <!-- Offer end -->
+    ?>
+    <!-- Offer end -->
 
     <!--/ Carousel Star /-->
     <div class="intro intro-carousel">
@@ -450,196 +450,6 @@ if (isset($_GET['id'])) {
           </div>
         </div>
       </div>
-      <!-- <div id="property-carousel" class="owl-carousel owl-theme">
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/property-6.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">206 Mount
-                      <br /> Olive Road Two</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | Rs 50,000</span>
-                  </div>
-                  <a href="#" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/property-3.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">157 West
-                      <br /> Central Park</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | Rs 50,000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/property-7.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">245 Azabu
-                      <br /> Nishi Park let</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | Rs 50,000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-b">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src="img/property-10.jpg" alt="" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="property-single.html">204 Montal
-                      <br /> South Bela Two</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | Rs 50,000</span>
-                  </div>
-                  <a href="property-single.html" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div class="full-row">
         <div class="container">
           <div class="row">
@@ -651,7 +461,7 @@ if (isset($_GET['id'])) {
                 <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home">
                   <div class="row">
 
-                    <?php $query = mysqli_query($con, "SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` WHERE property.uid=user.uid ORDER BY date DESC LIMIT 9");
+                    <?php $query = mysqli_query($con, "SELECT property.*, user.uname,user.utype,user.uimage FROM `property`,`user` ORDER BY date DESC LIMIT 9");
                     while ($row = mysqli_fetch_array($query)) {
                       ?>
 
@@ -711,50 +521,47 @@ if (isset($_GET['id'])) {
 
   <!--/ Agents Star /-->
   <section class="section-agents section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Best Agents</h2>
-            </div>
-            <div class="title-link">
-              <a href="agents-grid.html">All Agents
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Meet Our Team</h2>
           </div>
         </div>
       </div>
-      <div class="row">
-
-        <?php
-        $query = mysqli_query($con, "SELECT * FROM user WHERE utype='agent'");
-        while ($row = mysqli_fetch_array($query)) {
-          ?>
-
-          <!-- <div class="col-md-4">
+    </div>
+    <div class="row">
+      <?php
+      $query = mysqli_query($con, "SELECT * FROM user WHERE utype='agent'");
+      while ($row = mysqli_fetch_array($query)) {
+      ?>
+        <a href="agent-single.html">
+        <div class="col-md-4">
           <div class="card-box-d">
             <div class="card-img-d">
-              <img src="img/<?php echo $row['6']; ?>" alt="" class="img-d img-fluid" />
+              <img style="height: 400px; width: 400px; object-fit: cover;" src="admin/user/<?php echo $row['6']; ?>" alt="Agent Image" class="img-d img-fluid">
             </div>
             <div class="card-overlay card-overlay-hover">
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two"><?php echo $row['1']; ?> <br />
-                    </a>
+                    <?php echo $row['1']; ?>
+                      
                   </h3>
                 </div>
               </div>
               <div class="card-body-d">
                 <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna
-                  dictum porta two.
+                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
                 </p>
                 <div class="info-agents color-a">
-                  <p><strong>Phone: </strong> 93200 88865</p>
-                  <p><strong>Email: </strong> agentsanuj.gaikwad@gmail.com</p>
+                  <p>
+                    <strong>Phone: </strong> <?php echo $row['3']; ?>
+                  </p>
+                  <p>
+                    <strong>Email: </strong><br> <?php echo $row['2']; ?>
+                  </p>
                 </div>
               </div>
               <div class="card-footer-d">
@@ -790,45 +597,27 @@ if (isset($_GET['id'])) {
               </div>
             </div>
           </div>
-        </div> -->
-
-          <div class="full-row">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12">
-                  <h2 class="text-secondary double-down-line text-center mb-5">Agent</h2>
-                </div>
-              </div>
-              <div class="row">
-
-                <?php
-                $query = mysqli_query($con, "SELECT * FROM user WHERE utype='agent'");
-                while ($row = mysqli_fetch_array($query)) {
-                  ?>
-
-                  <div class="col-md-6 col-lg-4">
-                    <div class="hover-zoomer bg-white shadow-one mb-4 card-box-d">
-                      <div class="overflow-hidden card-img-d">
-                        <img src="admin/user/<?php echo $row['6']; ?>" alt="aimage">
-                      </div>
-                      <div class="py-3 text-center">
-                        <h5 class="text-secondary hover-text-success"><a href="#"><?php echo $row['1']; ?></a></h5>
-                        <span>Real Estate - Agent</span>
-                        <p><?php echo $row['3']; ?></p>
-                      </div>
-                    </div>
-                  </div>
-
-                <?php } ?>
-              </div>
-            </div>
-          </div>
-          <?php
-        }
-        ?>
-      </div>
+        </div>
+        </a>
+      <?php } ?>
     </div>
-  </section>
+  </div>
+</section>
+
+
+  <!-- Add this CSS inline for hover effect -->
+  <style>
+    .card-box-d:hover img {
+      transform: scale(1.1);
+      /* Zoom-in effect */
+    }
+
+    .card-img-d img {
+      transition: transform 0.5s ease;
+      /* Smooth animation */
+    }
+  </style>
+
   <!--/ Agents End /-->
 
   <!--/ News Star /-->
@@ -864,32 +653,36 @@ if (isset($_GET['id'])) {
             $image_path = "admin/news/" . htmlspecialchars($row['image']); // Construct the image path
             ?>
             <div class="carousel-item-c">
-              <div class="card-box-b card-shadow news-box">
-                <div class="img-box-b">
+              <div class="card-box-b card-shadow news-box"
+                style="min-height: 350px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="img-box-b" style="height: 200px; overflow: hidden;">
                   <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($row['title']); ?>"
-                    class="img-fluid w-100 h-75" style="object-fit: cover;" />
+                    class="img-fluid w-100" style="object-fit: cover; height: 100%;" />
                 </div>
-                <div class="card-overlay p-3 text-white">
+                <div class="card-overlay p-3 text-white" style="flex-grow: 1;">
                   <div class="card-header-b">
                     <div class="card-category-b">
                       <a href="#" class="category-b"><?php echo htmlspecialchars($row['article_name']); ?></a>
                     </div>
                     <div class="card-title-b">
-                      <h2 class="title-2">
-                      <a href="news-single.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['title']); ?></a>
-
+                      <h2 class="title-2"
+                        style="height: 50px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                        <a
+                          href="news-single.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['title']); ?></a>
                       </h2>
                     </div>
                     <div class="card-date">
                       <span class="date-b"><?php echo date("d M. Y", strtotime($row['date'])); ?></span>
                     </div>
                   </div>
-                  <div class="card-description-b">
-                    <p><?php echo htmlspecialchars($row['short_content']); ?></p>
-                  </div>
-                  <div class="card-source-b">
-                    <span>Source: <?php echo htmlspecialchars($row['source']); ?></span>
-                  </div>
+                  <!-- <div class="card-description-b">
+                  <p style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                    <?php echo htmlspecialchars($row['short_content']); ?>
+                  </p>
+                </div>
+                <div class="card-source-b">
+                  <span>Source: <?php echo htmlspecialchars($row['source']); ?></span>
+                </div> -->
                 </div>
               </div>
             </div>
@@ -902,6 +695,7 @@ if (isset($_GET['id'])) {
       </div>
     </div>
   </section>
+
 
   <!-- Initialize Owl Carousel with Autoplay and Responsive Settings -->
   <script>
@@ -1072,34 +866,14 @@ if (isset($_GET['id'])) {
           </div>
         </div>
         <div class="col-sm-12 col-md-4 section-md-t3">
-          <div class="widget-a">
-            <div class="w-header-a">
-              <h3 class="w-title-a text-brand">International sites</h3>
-            </div>
-            <div class="w-body-a">
-              <ul class="list-unstyled">
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Venezuela</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">China</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Hong Kong</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Argentina</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i> <a href="#">Singapore</a>
-                </li>
-                <li class="item-list-a">
-                  <i class="fa fa-angle-right"></i>
-                  <a href="#">Philippines</a>
-                </li>
-              </ul>
-            </div>
+          <div class="sinse-box mt-1 position-relative bg-light">
+            <h3 class="sinse-title">Find Your
+              <!-- <span></span> -->
+              <br> Perfect Space with us
+            </h3>
+            <p>since 2008</p>
           </div>
+
         </div>
       </div>
     </div>

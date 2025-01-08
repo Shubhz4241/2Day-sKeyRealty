@@ -1,3 +1,11 @@
+<?php
+ini_set('session.cache_limiter', 'public');
+session_cache_limiter(false);
+session_start();
+include("config.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -225,10 +233,21 @@
         </div>
 
         <div class="container">
-          <h6 class="mt-2 p-5 text-justify">
-          2day's Key Realty in Kharghar Sector 8, Navi Mumbai 2day's Key Realty in Kharghar Sector 8, Navi Mumbai is a company that provides expert property consulting and real estate services. They have a deep understanding of the real estate market and are committed to client satisfaction. The company provides comprehensive solutions tailored to meet the unique needs of their clients. Whether clients are looking to buy, sell, or manage property, 2day's Key Realty in Kharghar Sector 8, Navi Mumbai is there to guide them every step of the way. The company strives to create lasting value for its clients by offering personalized, professional, and reliable services.
-          </h6>
-        </div>
+  <h6 
+    class="mt-5 p-5" 
+    style="font-weight: 400; line-height: 1.8; text-align: justify; background-color: lightgray; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);">
+    <strong>2day's Key Realty</strong> in Kharghar Sector 8, Navi Mumbai, is a company that provides expert property consulting and real estate services. They have a deep understanding of the real estate market and are committed to client satisfaction. 
+
+    <br><br>
+
+    The company provides comprehensive solutions tailored to meet the unique needs of their clients. Whether clients are looking to buy, sell, or manage property, <strong>2day's Key Realty</strong> is there to guide them every step of the way. 
+
+    <br><br>
+
+    The company strives to create lasting value for its clients by offering personalized, professional, and reliable services.
+  </h6>
+</div>
+
 
         <div class="col-md-12 section-t8">
           <div class="row">
@@ -241,12 +260,12 @@
               </div>
             </div>
             <div class="col-md-6 col-lg-5 section-md-t3">
-              <div class="title-box-d">
+              <div class="title-box-d p-3">
                 <h3 class="title-d">Anuj
                   <span class="color-d">B.</span> Gaikwad
                   <!-- <br> nibh.</h3> -->
               </div>
-              <p class="color-text-a">
+              <p class="color-text-a p-3">
                 In 2005, Mr. Anuj Gaikwad post completing his education commenced
                 operating as a real estate broker in individual capacity in Navi Mumbai.
                 <br>In 2008, Mr. Anuj Gaikwad established 2day's Key Realty to render
@@ -268,203 +287,88 @@
 
   <!--/ Team Star /-->
   <section class="section-agents section-t8">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Meet Our Team</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="img/agent-7.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Margaret Sotillo
-                      <br> Escala</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> 93200 88865
-                  </p>
-                  <p>
-                    <strong>Email: </strong> agentsanuj.gaikwad@gmail.com
-                  </p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="img/agent-6.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Stiven Spilver
-                      <br> Darw</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> 93200 88865
-                  </p>
-                  <p>
-                    <strong>Email: </strong> agentsanuj.gaikwad@gmail.com
-                  </p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card-box-d">
-            <div class="card-img-d">
-              <img src="img/agent-5.jpg" alt="" class="img-d img-fluid">
-            </div>
-            <div class="card-overlay card-overlay-hover">
-              <div class="card-header-d">
-                <div class="card-title-d align-self-center">
-                  <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two">Emma Toledo
-                      <br> Cascada</a>
-                  </h3>
-                </div>
-              </div>
-              <div class="card-body-d">
-                <p class="content-d color-text-a">
-                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
-                </p>
-                <div class="info-agents color-a">
-                  <p>
-                    <strong>Phone: </strong> 93200 88865
-                  </p>
-                  <p>
-                    <strong>Email: </strong> agentsanuj.gaikwad@gmail.com
-                  </p>
-                </div>
-              </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="title-wrap d-flex justify-content-between">
+          <div class="title-box">
+            <h2 class="title-a">Meet Our Team</h2>
           </div>
         </div>
       </div>
     </div>
-  </section>
+    <div class="row">
+      <?php
+      $query = mysqli_query($con, "SELECT * FROM user WHERE utype='agent'");
+      while ($row = mysqli_fetch_array($query)) {
+      ?>
+        <a href="agent-single.html">
+        <div class="col-md-4">
+          <div class="card-box-d">
+            <div class="card-img-d">
+              <img style="height: 400px; width: 400px; object-fit: cover;" src="admin/user/<?php echo $row['6']; ?>" alt="Agent Image" class="img-d img-fluid">
+            </div>
+            <div class="card-overlay card-overlay-hover">
+              <div class="card-header-d">
+                <div class="card-title-d align-self-center">
+                  <h3 class="title-d">
+                    <?php echo $row['1']; ?>
+                      
+                  </h3>
+                </div>
+              </div>
+              <div class="card-body-d">
+                <p class="content-d color-text-a">
+                  Sed porttitor lectus nibh, Cras ultricies ligula sed magna dictum porta two.
+                </p>
+                <div class="info-agents color-a">
+                  <p>
+                    <strong>Phone: </strong> <?php echo $row['3']; ?>
+                  </p>
+                  <p>
+                    <strong>Email: </strong><br> <?php echo $row['2']; ?>
+                  </p>
+                </div>
+              </div>
+              <div class="card-footer-d">
+                <div class="socials-footer d-flex justify-content-center">
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#" class="link-one">
+                        <i class="fa fa-dribbble" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </a>
+      <?php } ?>
+    </div>
+  </div>
+</section>
   <!--/ Team End /-->
 
   <!--/ footer Star /-->

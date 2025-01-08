@@ -83,6 +83,17 @@ if (!isset($_SESSION['auser'])) {
 				</li>
 
 				<li class="menu-title text-dark">
+					<span>Users</span>
+				</li>
+				<li class="submenu">
+					<a href="#"><i class="fe fe-browser" style="color: black;"></i> <span style="color: black;"> Add User Page </span> <span
+							class="menu-arrow"></span></a>
+					<ul style="display: none;">
+						<li><a href="useradd.php"> Add User Content </a></li>
+					</ul>
+				</li>
+
+				<li class="menu-title text-dark">
 					<span>All Users</span>
 				</li>
 
