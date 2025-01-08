@@ -181,7 +181,7 @@
   <!--/ Nav End /-->
 
   <!--/ Intro Single star /-->
-  <section class="intro-single">
+  <section class="intro-single mt-5">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-lg-8">
@@ -223,6 +223,7 @@
             </form>
           </div>
         </div>
+        
         <div class="col-md-4">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
@@ -505,6 +506,7 @@
             </div>
           </div>
         </div>
+      
       </div>
       <div class="row">
         <div class="col-sm-12">

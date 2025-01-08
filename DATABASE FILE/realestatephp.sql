@@ -329,3 +329,28 @@ ALTER TABLE `user`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+-- Add news --
+CREATE TABLE news (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    short_content TEXT NOT NULL,
+    full_article TEXT NOT NULL,
+    image VARCHAR(255) NOT NULL,
+    source VARCHAR(255) NOT NULL,
+    article_name VARCHAR(255) NOT NULL,
+    date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Comment Table--
+
+CREATE TABLE comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,  -- Auto-incrementing ID for each comment
+    name VARCHAR(255) NOT NULL,         -- Name of the commenter
+    email VARCHAR(255) NOT NULL,        -- Email of the commenter
+    website VARCHAR(255),               -- Website of the commenter (optional)
+    message TEXT NOT NULL,              -- The content of the comment
+    date DATETIME DEFAULT CURRENT_TIMESTAMP -- Timestamp for when the comment is made
+);

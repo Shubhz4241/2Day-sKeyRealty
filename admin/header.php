@@ -158,6 +158,18 @@ if (!isset($_SESSION['auser'])) {
 					</ul>
 				</li>
 
+				<li class="menu-title text-dark">
+					<span>News</span>
+				</li>
+				<li class="submenu">
+					<a href="#"><i class="fe fe-browser" style="color: black;"></i> <span style="color: black;"> News Page </span> <span
+							class="menu-arrow"></span></a>
+					<ul style="display: none;">
+						<li><a href="newsadd.php"> Add News Content </a></li>
+						<li><a href="newsview.php"> View News Content </a></li>
+					</ul>
+				</li>
+
 			</ul>
 		</div>
 	</div>

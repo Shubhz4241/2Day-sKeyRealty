@@ -4,7 +4,32 @@ session_cache_limiter(false);
 session_start();
 include("config.php");
 
+if (isset($_GET['id'])) {
+  $news_id = $_GET['id'];
+
+  $query = "SELECT * FROM news WHERE id = $news_id";
+  $result = mysqli_query($con, $query);
+
+  if ($row = mysqli_fetch_assoc($result)) {
+    ?>
+    <div class="news-detail-container">
+      <h1><?php echo htmlspecialchars($row['title']); ?></h1>
+      <p><strong>Category:</strong> <?php echo htmlspecialchars($row['article_name']); ?></p>
+      <p><strong>Source:</strong> <?php echo htmlspecialchars($row['source']); ?></p>
+      <p><strong>Published on:</strong> <?php echo date("d M. Y", strtotime($row['date'])); ?></p>
+      <img src="news/<?php echo htmlspecialchars($row['image']); ?>" alt="<?php echo htmlspecialchars($row['title']); ?>"
+        class="img-fluid" />
+      <p><?php echo nl2br(htmlspecialchars($row['full_article'])); ?></p>
+    </div>
+    <?php
+  } else {
+    echo "<p>News article not found.</p>";
+  }
+} else {
+  echo "<p>Invalid request.</p>";
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,6 +82,16 @@ include("config.php");
   <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet" />
   <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
 
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="path_to_owl_carousel/owl.carousel.min.css">
+  <link rel="stylesheet" href="path_to_owl_carousel/owl.theme.default.min.css">
+
+  <!-- jQuery (needed for Owl Carousel) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Owl Carousel JS -->
+  <script src="path_to_owl_carousel/owl.carousel.min.js"></script>
+
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet" />
 </head>
@@ -70,81 +105,82 @@ include("config.php");
     </div>
     <span class="close-box-collapse right-boxed ion-ios-close"></span>
     <div class="box-collapse-wrap form">
-      <form class="form-a">
+      <form class="form-a" action="search.php" method="GET">
         <div class="row">
           <div class="col-md-12 mb-2">
             <div class="form-group">
-              <label for="Type">Keyword</label>
-              <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword" />
+              <label for="keyword">Keyword</label>
+              <input type="text" class="form-control form-control-lg form-control-a" name="keyword"
+                placeholder="Keyword" />
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="Type">Type</label>
-              <select class="form-control form-control-lg form-control-a" id="Type">
-                <option>All Type</option>
-                <option>For Rent</option>
-                <option>For Sale</option>
-                <option>Open House</option>
+              <label for="type">Type</label>
+              <select class="form-control form-control-lg form-control-a" name="type">
+                <option value="">All Types</option>
+                <option value="Apartment">Apartment</option>
+                <option value="Villa">Villa</option>
+                <option value="House">House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="stype">Sell Type</label>
+              <select class="form-control form-control-lg form-control-a" name="stype">
+                <option value="">All Types</option>
+                <option value="For Rent">For Rent</option>
+                <option value="For Sale">For Sale</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label for="city">City</label>
-              <select class="form-control form-control-lg form-control-a" id="city">
-                <option>All City</option>
-                <option>Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
+              <select class="form-control form-control-lg form-control-a" name="city">
+                <option value="">All Cities</option>
+                <option value="Alabama">Alabama</option>
+                <option value="Arizona">Arizona</option>
+                <option value="California">California</option>
+                <option value="Colorado">Colorado</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bedrooms">Bedrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <label for="bedroom">Bedrooms</label>
+              <select class="form-control form-control-lg form-control-a" name="bedroom">
+                <option value="">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="garages">Garages</label>
-              <select class="form-control form-control-lg form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
+              <label for="bathroom">Bathrooms</label>
+              <select class="form-control form-control-lg form-control-a" name="bathroom">
+                <option value="">Any</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bathrooms">Bathrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
+              <label for="min_price">Min Price</label>
+              <input type="number" class="form-control form-control-lg form-control-a" name="min_price"
+                placeholder="Min Price" />
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
-              </select>
+              <label for="max_price">Max Price</label>
+              <input type="number" class="form-control form-control-lg form-control-a" name="max_price"
+                placeholder="Max Price" />
             </div>
           </div>
           <div class="col-md-12">
@@ -154,6 +190,7 @@ include("config.php");
       </form>
     </div>
   </div>
+
   <!--/ Form Search End /-->
 
   <!--/ Nav Star /-->
@@ -178,9 +215,9 @@ include("config.php");
           <li class="nav-item">
             <a class="nav-link active" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link" href=" login.php">Login/Register</a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href=" about.php">About</a>
           </li>
@@ -190,7 +227,7 @@ include("config.php");
           <li class="nav-item">
             <a class="nav-link" href="blog-grid.html">Blog</a>
           </li>
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               Pages
@@ -201,7 +238,7 @@ include("config.php");
               <a class="dropdown-item" href="agents-grid.html">Agents Grid</a>
               <a class="dropdown-item" href="agent-single.html">Agent Single</a>
             </div>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href=" contact.php">Contact</a>
           </li>
@@ -215,78 +252,87 @@ include("config.php");
   </nav>
   <!--/ Nav End /-->
 
+  <!-- Offer start -->
   <?php $query = mysqli_query($con, "SELECT * FROM `offers`");
-    while ($row = mysqli_fetch_array($query)) {
+  while ($row = mysqli_fetch_array($query)) {
   ?>
-  <!--/ Carousel Star /-->
-  <div class="intro intro-carousel">
-    <div id="carousel" class="owl-carousel owl-theme">
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(admin/upload/<?php echo $row['6']?>)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top mt-5">
-                    <?php echo $row['1']?>,<?php echo $row['2']?>
-                      <br />
-                    </p>
-                    <h1 class="intro-title mb-4">
-                      <?php echo $row['3']?>
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a"><?php echo $row['4']?> | Rs <?php echo $row['5']?></span></a>
-                    </p>
+  <!-- Offer end -->
+
+    <!--/ Carousel Star /-->
+    <div class="intro intro-carousel">
+      <div id="carousel" class="owl-carousel owl-theme">
+        <div class="carousel-item-a intro-item bg-image"
+          style="background-image: url(admin/upload/<?php echo $row['6'] ?>)">
+          <div class="overlay overlay-a"></div>
+          <div class="intro-content display-table">
+            <div class="table-cell">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="intro-body">
+                      <p class="intro-title-top mt-5">
+                        <?php echo $row['1'] ?>,<?php echo $row['2'] ?>
+                        <br />
+                      </p>
+                      <h1 class="intro-title mb-4">
+                        <?php echo $row['3'] ?>
+                      </h1>
+                      <p class="intro-subtitle intro-price">
+                        <a href="#"><span class="price-a"><?php echo $row['4'] ?> | Rs <?php echo $row['5'] ?></span></a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(admin/upload/<?php echo $row['12']?>)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top mt-5">
-                    <?php echo $row['7']?>,<?php echo $row['8']?> <br />
-                    </p>
-                    <h1 class="intro-title mb-4">
-                    <?php echo $row['9']?>
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a"><?php echo $row['10']?> | Rs <?php echo $row['11']?></span></a>
-                    </p>
+        <div class="carousel-item-a intro-item bg-image"
+          style="background-image: url(admin/upload/<?php echo $row['12'] ?>)">
+          <div class="overlay overlay-a"></div>
+          <div class="intro-content display-table">
+            <div class="table-cell">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="intro-body">
+                      <p class="intro-title-top mt-5">
+                        <?php echo $row['7'] ?>,<?php echo $row['8'] ?> <br />
+                      </p>
+                      <h1 class="intro-title mb-4">
+                        <?php echo $row['9'] ?>
+                      </h1>
+                      <p class="intro-subtitle intro-price">
+                        <a href="#"><span class="price-a"><?php echo $row['10'] ?> | Rs
+                            <?php echo $row['11'] ?></span></a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url(admin/upload/<?php echo $row['18']?>)">
-        <div class="overlay overlay-a"></div>
-        <div class="intro-content display-table">
-          <div class="table-cell">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-8">
-                  <div class="intro-body">
-                    <p class="intro-title-top mt-5">
-                    <?php echo $row['13']?>,<?php echo $row['14']?>
-                    </p>
-                    <h1 class="intro-title mb-4">
-                    <?php echo $row['15']?>
-                    </h1>
-                    <p class="intro-subtitle intro-price">
-                      <a href="#"><span class="price-a"><?php echo $row['16']?> | Rs <?php echo $row['17']?></span></a>
-                    </p>
+        <div class="carousel-item-a intro-item bg-image"
+          style="background-image: url(admin/upload/<?php echo $row['18'] ?>)">
+          <div class="overlay overlay-a"></div>
+          <div class="intro-content display-table">
+            <div class="table-cell">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-8">
+                    <div class="intro-body">
+                      <p class="intro-title-top mt-5">
+                        <?php echo $row['13'] ?>,<?php echo $row['14'] ?>
+                      </p>
+                      <h1 class="intro-title mb-4">
+                        <?php echo $row['15'] ?>
+                      </h1>
+                      <p class="intro-subtitle intro-price">
+                        <a href="#"><span class="price-a"><?php echo $row['16'] ?> | Rs
+                            <?php echo $row['17'] ?></span></a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -295,8 +341,7 @@ include("config.php");
         </div>
       </div>
     </div>
-  </div>
-  <!--/ Carousel end /-->
+    <!--/ Carousel end /-->
   <?php } ?>
   <!--/ Services Star /-->
   <section class="section-services section-t8">
@@ -612,8 +657,8 @@ include("config.php");
 
                       <div class="col-md-6 col-lg-4">
                         <div class="featured-thumb hover-zoomer mb-4 shadow">
-                          <div class="overlay-black overflow-hidden position-relative"> <img style="aspect-ratio: 3/2;" class="img-fluid"
-                              src="admin/property/<?php echo $row['18']; ?>" alt="pimage">
+                          <div class="overlay-black overflow-hidden position-relative"> <img style="aspect-ratio: 3/2;"
+                              class="img-fluid" src="admin/property/<?php echo $row['18']; ?>" alt="pimage">
                             <div class="featured bg-danger text-white">New</div>
                             <div class="sale bg-warning text-white text-capitalize">For <?php echo $row['5']; ?></div>
                             <div class="price text-primary"><b>$<?php echo $row['13']; ?> </b><span
@@ -622,7 +667,8 @@ include("config.php");
                           <div class="featured-thumb-data shadow-one">
                             <div class="p-3">
                               <h5 class="text-secondary hover-text-success mb-2 text-capitalize"><a
-                                  href="property-single.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a></h5>
+                                  href="property-single.php?pid=<?php echo $row['0']; ?>"><?php echo $row['1']; ?></a>
+                              </h5>
                               <span class="location text-capitalize"><i class="fas fa-map-marker-alt text-success"></i>
                                 <?php echo $row['14']; ?></span>
                             </div>
@@ -638,7 +684,8 @@ include("config.php");
                             </div>
                             <div class="p-4 d-inline-block w-100">
                               <div class="float-left text-capitalize"><i class="fas fa-user text-success mr-1"></i>By :
-                                <?php echo $row['uname']; ?></div><br>
+                                <?php echo $row['uname']; ?>
+                              </div><br>
                               <div class="float-right"><i class="far fa-calendar-alt text-success mr-1"></i>
                                 <?php echo date('d-m-Y', strtotime($row['date'])); ?></div>
                             </div>
@@ -681,22 +728,21 @@ include("config.php");
       </div>
       <div class="row">
 
-      <?php 
-      $query=mysqli_query($con,"SELECT * FROM user WHERE utype='agent'");
-			while($row=mysqli_fetch_array($query))
-			{
-      ?>
+        <?php
+        $query = mysqli_query($con, "SELECT * FROM user WHERE utype='agent'");
+        while ($row = mysqli_fetch_array($query)) {
+          ?>
 
-        <!-- <div class="col-md-4">
+          <!-- <div class="col-md-4">
           <div class="card-box-d">
             <div class="card-img-d">
-              <img src="img/<?php echo $row['6'];?>" alt="" class="img-d img-fluid" />
+              <img src="img/<?php echo $row['6']; ?>" alt="" class="img-d img-fluid" />
             </div>
             <div class="card-overlay card-overlay-hover">
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="agent-single.html" class="link-two"><?php echo $row['1'];?> <br />
+                    <a href="agent-single.html" class="link-two"><?php echo $row['1']; ?> <br />
                     </a>
                   </h3>
                 </div>
@@ -746,40 +792,40 @@ include("config.php");
           </div>
         </div> -->
 
-        <div class="full-row">
+          <div class="full-row">
             <div class="container">
-				<div class="row">
-                    <div class="col-lg-12">
-                        <h2 class="text-secondary double-down-line text-center mb-5">Agent</h2>
-                        </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <h2 class="text-secondary double-down-line text-center mb-5">Agent</h2>
                 </div>
-                <div class="row">
-                 
-                    <?php 
-							$query=mysqli_query($con,"SELECT * FROM user WHERE utype='agent'");
-								while($row=mysqli_fetch_array($query))
-								{
-                ?>
-                            
-                    <div class="col-md-6 col-lg-4">
-                        <div class="hover-zoomer bg-white shadow-one mb-4 card-box-d">
-                            <div class="overflow-hidden card-img-d"> 
-                              <img src="admin/user/<?php echo $row['6'];?>" alt="aimage"> </div>
-                            <div class="py-3 text-center">
-                                <h5 class="text-secondary hover-text-success"><a href="#"><?php echo $row['1'];?></a></h5>
-                                <span>Real Estate - Agent</span> 
-                                <p><?php echo $row['3'];?></p>
-                            </div>
-                        </div>
+              </div>
+              <div class="row">
+
+                <?php
+                $query = mysqli_query($con, "SELECT * FROM user WHERE utype='agent'");
+                while ($row = mysqli_fetch_array($query)) {
+                  ?>
+
+                  <div class="col-md-6 col-lg-4">
+                    <div class="hover-zoomer bg-white shadow-one mb-4 card-box-d">
+                      <div class="overflow-hidden card-img-d">
+                        <img src="admin/user/<?php echo $row['6']; ?>" alt="aimage">
+                      </div>
+                      <div class="py-3 text-center">
+                        <h5 class="text-secondary hover-text-success"><a href="#"><?php echo $row['1']; ?></a></h5>
+                        <span>Real Estate - Agent</span>
+                        <p><?php echo $row['3']; ?></p>
+                      </div>
                     </div>
-                   
-                    <?php } ?>
-                </div>
+                  </div>
+
+                <?php } ?>
+              </div>
             </div>
-        </div>
-      <?php 
-      } 
-      ?>
+          </div>
+          <?php
+        }
+        ?>
       </div>
     </div>
   </section>
@@ -795,7 +841,7 @@ include("config.php");
               <h2 class="title-a">Latest News</h2>
             </div>
             <div class="title-link">
-              <a href="blog-grid.html">All News
+              <a href="newslist.php">All News
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
@@ -803,101 +849,90 @@ include("config.php");
         </div>
       </div>
       <div id="new-carousel" class="owl-carousel owl-theme">
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-2.jpg" alt="" class="img-b img-fluid" />
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">House</a>
+        <!-- News items looped here (same as before) -->
+        <?php
+        // Include database connection
+        require("config.php");
+
+        // Query to fetch news data from the database
+        $query = "SELECT id, title, short_content, full_article, image, source, article_name, date FROM news";
+        $result = mysqli_query($con, $query);
+
+        // Check if data exists
+        if ($result && mysqli_num_rows($result) > 0) {
+          while ($row = mysqli_fetch_assoc($result)) {
+            $image_path = "admin/news/" . htmlspecialchars($row['image']); // Construct the image path
+            ?>
+            <div class="carousel-item-c">
+              <div class="card-box-b card-shadow news-box">
+                <div class="img-box-b">
+                  <img src="<?php echo $image_path; ?>" alt="<?php echo htmlspecialchars($row['title']); ?>"
+                    class="img-fluid w-100 h-75" style="object-fit: cover;" />
                 </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">House is comming <br />
-                      new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-5.jpg" alt="" class="img-b img-fluid" />
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Travel is comming <br />
-                      new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-7.jpg" alt="" class="img-b img-fluid" />
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Park</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="blog-single.html">Park is comming <br />
-                      new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
+                <div class="card-overlay p-3 text-white">
+                  <div class="card-header-b">
+                    <div class="card-category-b">
+                      <a href="#" class="category-b"><?php echo htmlspecialchars($row['article_name']); ?></a>
+                    </div>
+                    <div class="card-title-b">
+                      <h2 class="title-2">
+                      <a href="news-single.php?id=<?php echo $row['id']; ?>"><?php echo htmlspecialchars($row['title']); ?></a>
+
+                      </h2>
+                    </div>
+                    <div class="card-date">
+                      <span class="date-b"><?php echo date("d M. Y", strtotime($row['date'])); ?></span>
+                    </div>
+                  </div>
+                  <div class="card-description-b">
+                    <p><?php echo htmlspecialchars($row['short_content']); ?></p>
+                  </div>
+                  <div class="card-source-b">
+                    <span>Source: <?php echo htmlspecialchars($row['source']); ?></span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="carousel-item-c">
-          <div class="card-box-b card-shadow news-box">
-            <div class="img-box-b">
-              <img src="img/post-3.jpg" alt="" class="img-b img-fluid" />
-            </div>
-            <div class="card-overlay">
-              <div class="card-header-b">
-                <div class="card-category-b">
-                  <a href="#" class="category-b">Travel</a>
-                </div>
-                <div class="card-title-b">
-                  <h2 class="title-2">
-                    <a href="#">Travel is comming <br />
-                      new</a>
-                  </h2>
-                </div>
-                <div class="card-date">
-                  <span class="date-b">18 Sep. 2017</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            <?php
+          }
+        } else {
+          echo "<p>No news found.</p>";
+        }
+        ?>
       </div>
     </div>
   </section>
+
+  <!-- Initialize Owl Carousel with Autoplay and Responsive Settings -->
+  <script>
+    $(document).ready(function () {
+      $("#new-carousel").owlCarousel({
+        loop: true,            // Enable looping of items
+        margin: 10,            // Margin between items
+        nav: true,             // Enable next/prev buttons
+        dots: false,           // Disable dots (pagination)
+        center: true,
+        items: 3,              // Display 3 items per slide
+        responsive: {
+          0: {
+            items: 1       // Show 1 item on small screens
+          },
+          600: {
+            items: 2       // Show 2 items on medium screens
+          },
+          1000: {
+            items: 3       // Show 3 items on large screens
+          }
+        }
+      });
+    });
+  </script>
+
+
+
+
+
+
   <!--/ News End /-->
 
   <!--/ Testimonials Star /-->
@@ -1259,25 +1294,28 @@ include("config.php");
     };
   </script>
 
+  <!-- Initialize Owl Carousel with Autoplay -->
 
-<script src="js/jquery.min.js"></script> 
-<!--jQuery Layer Slider --> 
-<script src="js/greensock.js"></script> 
-<script src="js/layerslider.transitions.js"></script> 
-<script src="js/layerslider.kreaturamedia.jquery.js"></script> 
-<!--jQuery Layer Slider --> 
-<script src="js/popper.min.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/owl.carousel.min.js"></script> 
-<script src="js/tmpl.js"></script> 
-<script src="js/jquery.dependClass-0.1.js"></script> 
-<script src="js/draggable-0.1.js"></script> 
-<script src="js/jquery.slider.js"></script> 
-<script src="js/wow.js"></script> 
-<script src="js/YouTubePopUp.jquery.js"></script> 
-<script src="js/validate.js"></script> 
-<script src="js/jquery.cookie.js"></script> 
-<script src="js/custom.js"></script>
+
+
+  <script src="js/jquery.min.js"></script>
+  <!--jQuery Layer Slider -->
+  <script src="js/greensock.js"></script>
+  <script src="js/layerslider.transitions.js"></script>
+  <script src="js/layerslider.kreaturamedia.jquery.js"></script>
+  <!--jQuery Layer Slider -->
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/tmpl.js"></script>
+  <script src="js/jquery.dependClass-0.1.js"></script>
+  <script src="js/draggable-0.1.js"></script>
+  <script src="js/jquery.slider.js"></script>
+  <script src="js/wow.js"></script>
+  <script src="js/YouTubePopUp.jquery.js"></script>
+  <script src="js/validate.js"></script>
+  <script src="js/jquery.cookie.js"></script>
+  <script src="js/custom.js"></script>
 
 </body>
 

@@ -308,7 +308,7 @@ if(isset($_REQUEST['reg']))
     <!--/ Nav End /-->
 
     <!--/ Intro Single star /-->
-    <section class="intro-single mt-5">
+    <!-- <section class="intro-single mt-5">
       <div class="container">
         <div class="row">
           <div class="col-md-12 col-lg-8">
@@ -333,7 +333,7 @@ if(isset($_REQUEST['reg']))
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     <!--/ Intro Single End /-->
 
     <!--/ News Grid Star /-->

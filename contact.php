@@ -1,32 +1,30 @@
 <?php
 include("config.php");
-$error = "";
-$msg = "";
-if(isset($_REQUEST['submit']))
-{
-  $cname = $_REQUEST['cname'];
-  $cemail = $_REQUEST['cemail'];
-  $cphone = $_REQUEST['cphone'];
-  $csubject = $_REQUEST['csubject'];
-  $cmessage = $_REQUEST['cmessage'];
-  echo "1";
+
+if (isset($_POST['cname']) && isset($_POST['cemail']) && isset($_POST['cphone']) && isset($_POST['csubject']) && isset($_POST['cmessage'])) {
+  $cname = $_POST['cname'];
+  $cemail = $_POST['cemail'];
+  $cphone = $_POST['cphone'];
+  $csubject = $_POST['csubject'];
+  $cmessage = $_POST['cmessage'];
+
   if (!empty($cname) && !empty($cemail) && !empty($cphone) && !empty($csubject) && !empty($cmessage)) {
-
-    $sql = "INSERT INTO contact (cname ,cemail,cphone,csubject,cmessage) VALUES ('$cname','$cemail','$cphone','$csubject','$cmessage')";
+    $sql = "INSERT INTO contact (cname, cemail, cphone, csubject, cmessage) VALUES ('$cname', '$cemail', '$cphone', '$csubject', '$cmessage')";
     $result = mysqli_query($con, $sql);
-    echo "2";
-    if ($result) {
-      echo "3";
-      $msg = "<p class='alert alert-success'>Message Send Successfully</p> ";
 
+    if ($result) {
+      echo "success";
     } else {
-      $error = "<p class='alert alert-warning'>Message Not Send Successfully</p> ";
+      echo "error";
     }
   } else {
-    $error = "<p class='alert alert-warning'>Please Fill all the fields</p>";
+    echo "Please fill all the fields.";
   }
+} else {
+  echo "Invalid request.";
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -258,7 +256,7 @@ if(isset($_REQUEST['submit']))
         </div>
         <div class="col-sm-12 section-t8">
           <div class="row">
-            <div class="col-md-7">
+            <!-- <div class="col-md-7">
               <form class="form-a contactForm" action="contact.php" method="post" role="form">
                 <div id="sendmessage">Your message has been sent. Thank you!</div>
                 <div id="errormessage"></div>
@@ -303,7 +301,49 @@ if(isset($_REQUEST['submit']))
                   </div>
                 </div>
               </form>
-            </div>
+            </div> -->
+            <div class="col-md-7">
+  <form id="contactForm" class="form-a contactForm" role="form">
+    <div id="sendmessage" style="display:none;">Your message has been sent. Thank you!</div>
+    <div id="errormessage" style="display:none;"></div>
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <input type="text" name="cname" class="form-control form-control-lg form-control-a"
+            placeholder="Your Name" required>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <input name="cemail" type="email" class="form-control form-control-lg form-control-a"
+            placeholder="Your Email" required>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <input type="tel" name="cphone" class="form-control form-control-lg form-control-a"
+            placeholder="Phone no" required>
+        </div>
+      </div>
+      <div class="col-md-6 mb-3">
+        <div class="form-group">
+          <input type="text" name="csubject" class="form-control form-control-lg form-control-a"
+            placeholder="Subject" required>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <div class="form-group">
+          <textarea class="form-control" name="cmessage" cols="45" rows="8" required
+            placeholder="Message"></textarea>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <button type="submit" class="btn btn-a">Send Message</button>
+      </div>
+    </div>
+  </form>
+</div>
+
             <div class="col-md-5 section-md-t3">
               <div class="icon-box section-b2">
                 <div class="icon-box-icon">
@@ -537,6 +577,38 @@ if(isset($_REQUEST['submit']))
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function (e) {
+  e.preventDefault(); // Prevent the default form submission
+
+  // Gather form data
+  const formData = new FormData(this);
+
+  // Send the data to the server using Fetch API
+  fetch("contact.php", {
+    method: "POST",
+    body: formData,
+  })
+    .then((response) => response.text())
+    .then((data) => {
+      if (data.includes("success")) {
+        document.getElementById("sendmessage").style.display = "block";
+        document.getElementById("errormessage").style.display = "none";
+        document.getElementById("contactForm").reset();
+      } else {
+        document.getElementById("sendmessage").style.display = "none";
+        document.getElementById("errormessage").style.display = "block";
+        document.getElementById("errormessage").innerHTML = data;
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      document.getElementById("errormessage").style.display = "block";
+      document.getElementById("errormessage").innerHTML = "An error occurred. Please try again.";
+    });
+});
+
+  </script>
 
 </body>
 
